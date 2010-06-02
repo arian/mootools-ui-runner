@@ -1,0 +1,9 @@
+[submodule "mootools-more"]
+	path = mootools-more
+	url = git://github.com/arian/mootools-more.git
+[submodule "mootools-core"]
+	path = mootools-core
+	url = git://github.com/mootools/mootools-core.git
+[submodule "Packager"]
+	path = Packager
+	url = http://github.com/kamicane/packager.git
