@@ -29,26 +29,10 @@
 </div>
 <div id="docs" class="doc">
 	
-	<div class="methods">
-		<ul>
-		<?php foreach($methods as $group => $submethods): ?>
-			<li>
-				<strong><a href="<?php echo '#'.$group; ?>"><?php echo str_replace('-','.',$group); ?></a></strong>
-				<ul>
-					<?php foreach($submethods as $method): ?>
-					<li><a href="<?php echo '#'.$group.':'.$method; ?>"><?php echo str_replace('-','.',$method); ?></a></li>
-					<?php endforeach; ?>
-				</ul>
-			</li>
-		<?php endforeach; ?>
-		</ul>
-	</div>
-
 	<div class="content">
 		<?php echo $content; ?>
 	</div>
 
-	
 </div>
 </div>
 	

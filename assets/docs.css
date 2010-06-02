@@ -90,6 +90,7 @@ pre {
 
 #docs {
 	margin: 0 0 0 175px;
+	border-left: 1px solid #ddd;
 }
 
 #docs h1, #docs h2 {
@@ -120,31 +121,6 @@ pre {
 	font-style: normal;
 }
 
-.doc .content {
-	margin: 0 160px 0 0;
-	padding: 0 25px;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	line-height:1.5em;
+.content {
+	padding-left: 25px;
 }
-
-.doc .methods {
-	float: right;
-	width: 150px;
-}
-
-.methods ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	line-height: 1.5em;
-}
-
-.methods ul li strong {
-	font-size: 1.3em;
-}
-
-.methods ul ul{
-	margin: 1em 0;
-}
-
