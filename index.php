@@ -40,7 +40,7 @@ $content = file_get_contents($filePath);
 $content = str_replace('href="/','href="'.$baseurl.'/',$content);
 
 // Replace script src attribute
-$content = str_replace('/depender/build',$basepath.'/build.php',$content);
+$content = str_replace('/depender/build',$basepath.'build.php',$content);
 
 
 $tpl->content = $content;

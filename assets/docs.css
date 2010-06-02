@@ -37,7 +37,7 @@ pre {
 	text-shadow:none;
 }
 
-#container {
+#container1 {
 	width: 980px;
 	margin: auto;
 	overflow:hidden;
@@ -123,4 +123,5 @@ pre {
 
 .content {
 	padding-left: 25px;
+	width: 600px;
 }

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div id="container">
+<div id="container1">
 <div id="header">
 <h1>MooTools More 1.3 Test Runner</h1>
 </div>
