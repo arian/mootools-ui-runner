@@ -54,7 +54,9 @@ foreach ($dir as $fileinfo){
     	$category = array();
     	$dir2 = new DirectoryIterator($docsPath.'/'.$fileinfo->getFilename());
 		foreach($dir2 as $fileinfo2){
-			if($fileinfo2->isFile()) $category[] = str_replace('.html','',$fileinfo2->getFilename());
+			if($fileinfo2->isFile() && strpos($fileinfo2->getFilename(),'.tmp') === false){
+				$category[] = str_replace('.html','',$fileinfo2->getFilename());
+			}
 		}
 		$categories[$fileinfo->getFilename()] = $category;
 	}
