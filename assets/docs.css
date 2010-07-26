@@ -1,6 +1,6 @@
 /* Thanks Cheeaun: http://github.com/cheeaun/moodoco/blob/master/assets/docs.css */
 
-html,body {
+html, body {
 	font-size:100%;
 	margin:0;
 	padding:0;
@@ -20,27 +20,14 @@ a {
 	text-decoration: underline;
 }
 
-a:hover,
-a:active {
+a:hover, a:active {
 	color: #E79D35;
 	background-color: transparent;
 }
 
-pre {
-	padding: 5px 7px;
-	background-color: #fff;
-	border: 1px solid #eee;
-	border-width: 1px 0;
-	line-height:1.5;
-	overflow:hidden;
-	word-wrap:break-word;
-	text-shadow:none;
-}
 
 #container1 {
-	width: 980px;
-	margin: auto;
-	overflow:hidden;
+	margin: 0 30px;
 }
 
 #header {
@@ -71,7 +58,7 @@ pre {
 }
 
 #menu ul ul li{
-	line-height:1.4em;
+	line-height: 1.4em;
 }
 
 #menu ul ul li a {
@@ -94,7 +81,7 @@ pre {
 }
 
 #docs h1, #docs h2 {
-	padding: 0 0 .3em;
+	padding: 0 .3em;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -122,6 +109,44 @@ pre {
 }
 
 .content {
-	padding-left: 25px;
-	width: 600px;
+	padding: 0 35px;
+	position: relative;
+}
+
+
+#actions {
+    width: 400px;
+    position: relative;
+    z-index: 1000;
+    padding: 4px 0px;
+}
+
+#actions dt {
+    font-weight: bold;
+    margin: 8px;
+}
+
+#actions dt a {
+    display: block;
+    background: #AABCF2;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 4px;
+}
+
+#actions dt a:hover {
+    background: #CACEE8;
+}
+
+#actions dd {
+    padding: 0px 4px;
+    margin: 0px 8px;
+    position: relative;
+    top: -8px;
+}
+
+h2 .prevNext {
+	font-size: 0.7em;
+	font-weight: normal;
 }

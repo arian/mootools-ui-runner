@@ -6,7 +6,7 @@ include_once 'libs/markdown.php';
 
 $rq = new Awf_Request_Path();
 
-$docsPath = 'mootools-more/Tests';
+$testsPath = 'mootools-more/Tests';
 $defaultFile = 'Class/Chain.Wait';
 
 // Determine the right file
@@ -18,13 +18,12 @@ if(empty($file)){
 }
 
 //$file = preg_replace('/[^a-zA-Z0-9\-\.\/]+/','',str_replace('../','',$file));
-$filePath = $docsPath.'/'.$file.'.html';
+$filePath = $testsPath.'/'.$file.'.html';
 
 if(!file_exists($filePath)){
 	$file = $defaultFile;
-	$filePath = $docsPath.'/'.$file;
+	$filePath = $testsPath.'/'.$file;
 }
-
 
 // Create template instance
 $tpl = new Awf_Template();
@@ -37,31 +36,53 @@ $tpl->title = $file;
 $content = file_get_contents($filePath);
 
 // Replace urls with the right ones
-$content = str_replace('href="/','href="'.$baseurl.'/',$content);
+$content = explode('href="/', $content);
+foreach($content as &$part){
+	if(substr($part, 0, 4) == 'asset') $baseurl.'/'.$part;
+}
+$content = implode('href="/', $content);
 
 // Replace script src attribute
-$content = str_replace('/depender/build',$basepath.'build.php',$content);
+$content = str_replace('/depender/build', $basepath.'build.php', $content);
 
+$content = str_replace('/asset/more/', $basepath.$testsPath.'/_assets/', $content);
+
+$content = preg_replace('/\/ajax_(html_echo)\//', $basepath.'ajax.php', $content);
 
 $tpl->content = $content;
 
 
 // Get the menu
-$categories = array();
-$dir = new DirectoryIterator($docsPath);
+$categories = array(); // tests by category
+$tests = array(); // all tests
+$dir = new DirectoryIterator($testsPath);
 foreach ($dir as $fileinfo){
-	if(!$fileinfo->isDot() && $fileinfo->isDir()){
+	if(!$fileinfo->isDot() && $fileinfo->isDir() && $fileinfo->getFilename() != '_assets'){
     	$category = array();
-    	$dir2 = new DirectoryIterator($docsPath.'/'.$fileinfo->getFilename());
+		$catName = $fileinfo->getFilename();
+    	$dir2 = new DirectoryIterator($testsPath.'/'.$fileinfo->getFilename());
 		foreach($dir2 as $fileinfo2){
-			if($fileinfo2->isFile() && strpos($fileinfo2->getFilename(),'.tmp') === false){
-				$category[] = str_replace('.html','',$fileinfo2->getFilename());
+			if($fileinfo2->isFile() && strpos($fileinfo2->getFilename(), '.tmp') === false){
+				$test = str_replace('.html', '', $fileinfo2->getFilename());
+				$category[] = $test;
+				$tests[] = $catName.'/'.$test;
 			}
 		}
-		$categories[$fileinfo->getFilename()] = $category;
+		$categories[$catName] = $category;
 	}
 }
 $tpl->menu = $categories;
+
+// Get previous and next test
+$testIndex = array_search($file, $tests);
+$nextTest = $prevTest = false;
+if ($testIndex !== false){
+	if (isset($tests[$testIndex + 1])) $nextTest = $tests[$testIndex + 1]; 
+	if (isset($tests[$testIndex - 1])) $prevTest = $tests[$testIndex - 1]; 
+}
+
+$tpl->nextTest = $nextTest;
+$tpl->prevTest = $prevTest;
 
 
 $tpl->display('index.php');
