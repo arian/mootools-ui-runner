@@ -37,6 +37,7 @@ a:hover, a:active {
 #menu {
 	float: left;
 	width: 150px;
+	position: absolute;
 }
 
 #menu ul {
@@ -76,8 +77,9 @@ a:hover, a:active {
 }
 
 #docs {
-	margin: 0 0 0 175px;
+	margin-left: 175px;
 	border-left: 1px solid #ddd;
+	position: relative;
 }
 
 #docs h1, #docs h2 {
@@ -110,7 +112,6 @@ a:hover, a:active {
 
 .content {
 	padding: 0 35px;
-	position: relative;
 }
 
 
