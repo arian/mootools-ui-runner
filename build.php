@@ -1,10 +1,12 @@
 <?php
 
+$config = include 'config.php';
+
 header('Content-Type: text/javascript');
 
 require dirname(__FILE__) . '/Packager/packager.php';
 
-$pkg = new Packager(array('mootools-core','mootools-more'));
+$pkg = new Packager(array($config['core-path'], $config['more-path']));
 
 $components = $_GET['require'];
 $files = (empty($components)) ? $pkg->get_all_files() : $pkg->components_to_files(explode(',',$components));

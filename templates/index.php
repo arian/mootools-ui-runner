@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<link href="<?php echo $basepath; ?>assets/docs.css" rel="stylesheet" type="text/css" media="screen" />
-	<title>MooTools More 1.3 Test Runner - <?php echo htmlentities(str_replace('_', ' ', $title)); ?></title>
+	<title><?php echo $appName; ?> - <?php echo htmlentities(str_replace('_', ' ', $title)); ?></title>
 
 	<script>
 		

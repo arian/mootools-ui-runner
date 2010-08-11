@@ -1,13 +1,15 @@
 <?php
 
+$config = include 'config.php';
+
 include_once 'libs/Request/Path.php';
 include_once 'libs/Template.php';
 include_once 'libs/markdown.php';
 
 $rq = new Awf_Request_Path();
 
-$testsPath = 'mootools-more/Tests';
-$defaultFile = 'Class/Chain.Wait';
+$testsPath = $config['tests-path'];
+$defaultFile = $config['default-file'];
 
 // Determine the right file
 $file = $rq->toArray();
@@ -31,6 +33,7 @@ $tpl = new Awf_Template();
 $tpl->baseurl = $baseurl = $_SERVER['SCRIPT_NAME'];
 $tpl->basepath = $basepath = str_replace('index.php','',$baseurl);
 $tpl->title = $file;
+$tpl->appName = $config['app-name'];
 
 // Get the content
 $content = file_get_contents($filePath);
@@ -44,9 +47,7 @@ $content = implode('href="/', $content);
 
 // Replace script src attribute
 $content = str_replace('/depender/build', $basepath.'build.php', $content);
-
 $content = str_replace('/asset/more/', $basepath.$testsPath.'/_assets/', $content);
-
 $content = preg_replace('/\/ajax_(html_echo)\//', $basepath.'ajax.php', $content);
 
 $tpl->content = $content;
@@ -85,5 +86,6 @@ $tpl->nextTest = $nextTest;
 $tpl->prevTest = $prevTest;
 
 
+// Fire the page!!
 $tpl->display('index.php');
 
