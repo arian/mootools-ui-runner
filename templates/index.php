@@ -6,10 +6,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<link href="<?php echo $basepath; ?>assets/docs.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="<?php echo $basepath; ?>assets/jasmine.css" rel="stylesheet" type="text/css" media="screen" />
+
+	<script src="<?php echo $basepath; ?>assets/jasmine.js"></script>
+	<script src="<?php echo $basepath; ?>assets/jasmine-html.js"></script>
+	<script src="<?php echo $basepath; ?>assets/Syn.js"></script>
+	
 	<title><?php echo $appName; ?> - <?php echo htmlentities(str_replace('_', ' ', $title)); ?></title>
 
 	<script>
-		
+	
 		var makeActions = function(tests){
 			try {
 				if (!$('actions')) new Element('dt', {'id': 'actions'}).inject($('mt-content'), 'top');
@@ -29,7 +35,13 @@
 				console.log('Ensure you have Core/Element.Event - plus its dependencies.', e);
 			}
 		};
-		
+
+		window.onload = function(){
+			// Run the specs
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter(null, document.getElementById('jasmine-reporter')));
+			jasmine.getEnv().execute();
+		};
+
 	</script>
 
 </head>
@@ -44,6 +56,12 @@
 	<?php if ($nextTest): ?><a href="<?php echo $baseurl.'/'.$nextTest; ?>" class="prevNext"><?php echo substr($nextTest, strrpos($nextTest, '/', -1) + 1); ?> &#187; </a><?php endif; ?>
 </h2>
 </div>
+
+
+<div id="jasmine-reporter">
+	<h2>Jasmine Results</h2>
+</div>
+
 
 <div id="menu">
 	<ul>
@@ -64,6 +82,8 @@
 	</div>
 
 </div>
+
+
 </div>
 	
 </body>

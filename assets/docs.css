@@ -114,6 +114,7 @@ a:active {
 
 .content {
 	padding: 0 35px;
+	margin-right: 420px;
 }
 
 
@@ -152,4 +153,10 @@ a:active {
 h2 .prevNext {
 	font-size: 0.7em;
 	font-weight: normal;
+}
+
+#jasmine-reporter {
+	width: 400px;
+	float: right;
+	position: relative;
 }

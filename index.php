@@ -46,6 +46,7 @@ foreach($content as &$part){
 $content = implode('href="/', $content);
 
 // Replace script src attribute
+$content = str_replace('/Tests/', $basepath.$testsPath.'/', $content);
 $content = str_replace('/depender/build', $basepath.'build.php', $content);
 $content = str_replace('/asset/more/', $basepath.$testsPath.'/_assets/', $content);
 $content = preg_replace('/\/ajax_(html_echo)\//', $basepath.'ajax.php', $content);
