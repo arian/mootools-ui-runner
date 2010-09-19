@@ -26,20 +26,18 @@ a:active {
 	background-color: transparent;
 }
 
-#container1 {
-	width: 100%;
-	position: relative;
-}
-
 #header {
 	text-shadow: 0 1px 0 #fff;
 	text-align: center;
 }
 
+#container1 {
+	margin: 0 20px;
+}
+
 #menu {
+	float: left;
 	width: 150px;
-	left: 20px;
-	position: absolute;
 	border-right: 1px solid #ddd;
 	text-shadow: 0 1px 0 #fff;
 }
@@ -80,6 +78,7 @@ a:active {
 
 #docs {
 	margin-left: 175px;
+	margin-right: 420px;
 	position: relative;
 }
 
@@ -119,35 +118,40 @@ a:active {
 
 
 #actions {
-    width: 400px;
-    position: relative;
-    z-index: 1000;
-    padding: 4px 0px;
+	width: 400px;
+	position: relative;
+	z-index: 1000;
+	padding: 4px 0px;
 }
 
 #actions dt {
-    font-weight: bold;
-    margin: 8px;
+	font-weight: bold;
+	margin: 8px;
+}
+
+#actions dt a,
+#startJasmine,
+.prevNext {
+	background: #AABCF2;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	padding: 4px;
 }
 
 #actions dt a {
-    display: block;
-    background: #AABCF2;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    padding: 4px;
+	display: block;
 }
 
 #actions dt a:hover {
-    background: #CACEE8;
+	background: #CACEE8;
 }
 
 #actions dd {
-    padding: 0px 4px;
-    margin: 0px 8px;
-    position: relative;
-    top: -8px;
+	padding: 0px 4px;
+	margin: 0px 8px;
+	position: relative;
+	top: -8px;
 }
 
 h2 .prevNext {

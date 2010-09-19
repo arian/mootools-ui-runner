@@ -11,43 +11,57 @@
 	<script src="<?php echo $basepath; ?>assets/jasmine.js"></script>
 	<script src="<?php echo $basepath; ?>assets/jasmine-html.js"></script>
 	<script src="<?php echo $basepath; ?>assets/Syn.js"></script>
-	
+
 	<title><?php echo $appName; ?> - <?php echo htmlentities(str_replace('_', ' ', $title)); ?></title>
 
 	<script>
-	
+
 		var makeActions = function(tests){
-			try {
-				if (!$('actions')) new Element('dt', {'id': 'actions'}).inject($('mt-content'), 'top');
-				tests.each(function(test) {
-					new Element('dt').adopt(
-						new Element('a', {
-							text: test.title,
-							events: {
-								click: test.fn
-							}
-						})
-					).inject('actions');
-					if (test.description) new Element('dd', { text: test.description }).inject('actions');
-				});
-			} catch(e) {
-				alert('Could not create actions. Check console for details.');
-				console.log('Ensure you have Core/Element.Event - plus its dependencies.', e);
-			}
+
+			if (!$('actions')) new Element('dt', {
+				id: 'actions'
+			}).inject($('mt-content'), 'top');
+
+			if (typeOf(tests)) tests = Object.values(tests);
+
+			tests.each(function(test) {
+				new Element('dt').adopt(
+					new Element('a', {
+						text: test.title,
+						events: {
+							click: test.fn
+						}
+					})
+				).inject('actions');
+				if (test.description) new Element('dd', {
+					text: test.description
+				}).inject('actions');
+			});
+
 		};
 
 		window.onload = function(){
-			// Run the specs
-			jasmine.getEnv().addReporter(new jasmine.TrivialReporter(null, document.getElementById('jasmine-reporter')));
-			jasmine.getEnv().execute();
-		};
+
+			var jasmineResults = document.getElementById('jasmineResults');
+
+			document.getElementById('startJasmine').onclick = function(event){
+				if (!event) event = window.event;
+				event.preventDefault();
+
+				jasmineResults.innerHTML = '';
+
+				// Run the specs
+				jasmine.getEnv().addReporter(new jasmine.TrivialReporter(null, jasmineResults));
+				jasmine.getEnv().execute();
+			};
+
+		}
 
 	</script>
 
 </head>
 <body>
 
-<div id="container1">
 <div id="header">
 <h1>MooTools More 1.3 Test Runner</h1>
 <h2>
@@ -57,34 +71,36 @@
 </h2>
 </div>
 
+<div id="container1">
 
-<div id="jasmine-reporter">
-	<h2>Jasmine Results</h2>
-</div>
+	<div id="jasmine-reporter">
+		<a href="#" id="startJasmine">Start automatic Tests</a>
+		<h2>Jasmine Results</h2>
+		<div id="jasmineResults"></div>
+	</div>
 
 
-<div id="menu">
-	<ul>
-	<?php foreach($menu as $category => $link): ?>
-		<li><strong><?php echo $category; ?></strong><ul>
-		<?php foreach($link as $text): ?>
-		<li><a href="<?php echo $baseurl.'/'.$category.'/'.$text; ?>"><?php echo str_replace('_', ' ', $text); ?></a></li>
+	<div id="menu">
+		<ul>
+		<?php foreach($menu as $category => $link): ?>
+			<li><strong><?php echo $category; ?></strong><ul>
+			<?php foreach($link as $text): ?>
+			<li><a href="<?php echo $baseurl.'/'.$category.'/'.$text; ?>"><?php echo str_replace('_', ' ', $text); ?></a></li>
+			<?php endforeach; ?>
+		</ul></li>
 		<?php endforeach; ?>
-	</ul></li>
-	<?php endforeach; ?>
-	</ul>
-</div>
+		</ul>
+	</div>
 
-<div id="docs" class="doc">
-	
-	<div id="mt-content" class="content">
-		<?php echo $content; ?>
+	<div id="docs" class="doc">
+
+		<div id="mt-content" class="content">
+			<?php echo $content; ?>
+		</div>
+
 	</div>
 
 </div>
 
-
-</div>
-	
 </body>
 </html>

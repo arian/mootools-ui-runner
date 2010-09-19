@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
+
 $config = include 'config.php';
 
 include_once 'libs/Request/Path.php';
@@ -64,7 +66,7 @@ foreach ($dir as $fileinfo){
 		$catName = $fileinfo->getFilename();
     	$dir2 = new DirectoryIterator($testsPath.'/'.$fileinfo->getFilename());
 		foreach($dir2 as $fileinfo2){
-			if($fileinfo2->isFile() && strpos($fileinfo2->getFilename(), '.tmp') === false){
+			if($fileinfo2->isFile() && substr($fileinfo2->getFilename(), -5) == '.html'){
 				$test = str_replace('.html', '', $fileinfo2->getFilename());
 				$category[] = $test;
 				$tests[] = $catName.'/'.$test;
@@ -79,8 +81,8 @@ $tpl->menu = $categories;
 $testIndex = array_search($file, $tests);
 $nextTest = $prevTest = false;
 if ($testIndex !== false){
-	if (isset($tests[$testIndex + 1])) $nextTest = $tests[$testIndex + 1]; 
-	if (isset($tests[$testIndex - 1])) $prevTest = $tests[$testIndex - 1]; 
+	if (isset($tests[$testIndex + 1])) $nextTest = $tests[$testIndex + 1];
+	if (isset($tests[$testIndex - 1])) $prevTest = $tests[$testIndex - 1];
 }
 
 $tpl->nextTest = $nextTest;
