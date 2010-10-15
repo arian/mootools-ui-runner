@@ -1,12 +1,12 @@
-MooTools PHP Test Runner
+MooTools UI Runner
 -------------------------
 
 quick setup:
 
-	$ git clone http://github.com/arian/mootools-php-test-runner.git
+	$ git clone http://github.com/arian/mootools-ui-runner.git
 	$ git submodule update --init
 
-Then open http://localhost/mootools-php-test-runner or anywhere else you put the files.
+Then open http://localhost/mootools-ui-runner or anywhere else you put the files.
 
 requirements:
 
