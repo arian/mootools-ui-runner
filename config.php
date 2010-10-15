@@ -5,5 +5,6 @@ return array(
 	'core-path' => '../mootools-core',
 	'more-path' => '../mootools-more',
 	'tests-path' => '../mootools-more/Tests',
-	'default-file' => 'Class/Chain.Wait_(tween)'
+	'default-file' => 'Class/Chain.Wait_(tween)',
+	'jasmine' => false
 );

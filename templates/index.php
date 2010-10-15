@@ -39,7 +39,7 @@
 			});
 
 		};
-
+<?php if ($jasmine): ?>
 		window.onload = function(){
 
 			var jasmineResults = document.getElementById('jasmineResults');
@@ -56,7 +56,7 @@
 			};
 
 		}
-
+<?php endif; ?>
 	</script>
 
 </head>
@@ -73,12 +73,13 @@
 
 <div id="container1">
 
+<?php if ($jasmine): ?>
 	<div id="jasmine-reporter">
 		<a href="#" id="startJasmine">Start automatic Tests</a>
 		<h2>Jasmine Results</h2>
 		<div id="jasmineResults"></div>
 	</div>
-
+<?php endif; ?>
 
 	<div id="menu">
 		<ul>

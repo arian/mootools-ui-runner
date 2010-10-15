@@ -36,6 +36,7 @@ $tpl->baseurl = $baseurl = $_SERVER['SCRIPT_NAME'];
 $tpl->basepath = $basepath = str_replace('index.php','',$baseurl);
 $tpl->title = $file;
 $tpl->appName = $config['app-name'];
+$tpl->jasmine = $config['jasmine'];
 
 // Get the content
 $content = file_get_contents($filePath);
