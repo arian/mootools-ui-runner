@@ -5,12 +5,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-	<link href="<?php echo $basepath; ?>assets/docs.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="<?php echo $basepath; ?>assets/runner.css" rel="stylesheet" type="text/css" media="screen" />
+
+<?php if ($jasmine): ?>
 	<link href="<?php echo $basepath; ?>assets/jasmine.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="<?php echo $basepath; ?>assets/runnerWithJasmine.css" rel="stylesheet" type="text/css" media="screen" />
 
 	<script src="<?php echo $basepath; ?>assets/jasmine.js"></script>
 	<script src="<?php echo $basepath; ?>assets/jasmine-html.js"></script>
 	<script src="<?php echo $basepath; ?>assets/Syn.js"></script>
+<?php endif; ?>
 
 	<title><?php echo $appName; ?> - <?php echo htmlentities(str_replace('_', ' ', $title)); ?></title>
 
@@ -39,7 +43,8 @@
 			});
 
 		};
-<?php if ($jasmine): ?>
+
+		<?php if ($jasmine): ?>
 		window.onload = function(){
 
 			var jasmineResults = document.getElementById('jasmineResults');
@@ -56,7 +61,7 @@
 			};
 
 		}
-<?php endif; ?>
+		<?php endif; ?>
 	</script>
 
 </head>
@@ -65,21 +70,21 @@
 <div id="header">
 <h1>MooTools More 1.3 Test Runner</h1>
 <h2>
-	<?php if ($prevTest): ?><a href="<?php echo $baseurl.'/'.$prevTest; ?>" class="prevNext"> &#171; <?php echo substr($prevTest, strrpos($prevTest, '/', -1) + 1); ?></a><?php endif; ?>
+	<?php if ($prevTest): ?><a href="<?php echo $baseurl.'/'.$prevTest; ?>" class="buttons"> &#171; <?php echo substr($prevTest, strrpos($prevTest, '/', -1) + 1); ?></a><?php endif; ?>
 	<?php echo htmlentities(str_replace('_', ' ', substr($title, strrpos($title, '/', -1) + 1))); ?>
-	<?php if ($nextTest): ?><a href="<?php echo $baseurl.'/'.$nextTest; ?>" class="prevNext"><?php echo substr($nextTest, strrpos($nextTest, '/', -1) + 1); ?> &#187; </a><?php endif; ?>
+	<?php if ($nextTest): ?><a href="<?php echo $baseurl.'/'.$nextTest; ?>" class="buttons"><?php echo substr($nextTest, strrpos($nextTest, '/', -1) + 1); ?> &#187; </a><?php endif; ?>
 </h2>
 </div>
 
 <div id="container1">
 
-<?php if ($jasmine): ?>
+	<?php if ($jasmine): ?>
 	<div id="jasmine-reporter">
-		<a href="#" id="startJasmine">Start automatic Tests</a>
+		<a href="#" id="startJasmine" class="buttons">Start automatic Tests</a>
 		<h2>Jasmine Results</h2>
 		<div id="jasmineResults"></div>
 	</div>
-<?php endif; ?>
+	<?php endif; ?>
 
 	<div id="menu">
 		<ul>
@@ -93,7 +98,7 @@
 		</ul>
 	</div>
 
-	<div id="docs" class="doc">
+	<div id="runner">
 
 		<div id="mt-content" class="content">
 			<?php echo $content; ?>

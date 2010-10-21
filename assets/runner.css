@@ -76,37 +76,37 @@ a:active {
 	font-weight: bold;
 }
 
-#docs {
+#runner {
 	margin-left: 175px;
-	margin-right: 420px;
 	position: relative;
 }
 
-#docs h1, #docs h2 {
+#runner h1,
+#runner h2 {
 	padding: 0 .3em;
 	border-bottom: 1px solid #ddd;
 }
 
-#docs h1,
-#docs h1 a {
+#runner h1,
+#runner h1 a {
 	color: #C17878;
 	background-color: transparent;
 	text-decoration: none;
 }
 
-#docs h2,
-#docs h2 a {
+#runner h2,
+#runner h2 a {
 	color: #78BA91;
 	background-color: transparent;
 	text-decoration: none;
 }
 
-#docs h1 a:hover,
-#docs h2 a:hover {
+#runner h1 a:hover,
+#runner h2 a:hover {
 	text-decoration: none;
 }
 
-#docs em {
+#runner em {
 	color: #686C70;
 	font-style: normal;
 }
@@ -129,12 +129,12 @@ a:active {
 }
 
 #actions dt a,
-#startJasmine,
-.prevNext {
+.buttons {
 	background: #AABCF2;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
+	border-radius: 4px;
 	padding: 4px;
 }
 
@@ -153,13 +153,7 @@ a:active {
 	top: -8px;
 }
 
-h2 .prevNext {
+h2 .buttons {
 	font-size: 0.7em;
 	font-weight: normal;
-}
-
-#jasmine-reporter {
-	width: 400px;
-	float: right;
-	position: relative;
 }
