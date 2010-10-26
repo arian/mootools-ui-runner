@@ -64,6 +64,10 @@
 		<?php endif; ?>
 	</script>
 
+	<?php if ($fireBugLight): ?>
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+	<?php endif; ?>
+
 </head>
 <body>
 

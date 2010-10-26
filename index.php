@@ -37,6 +37,7 @@ $tpl->basepath = $basepath = str_replace('index.php','',$baseurl);
 $tpl->title = $file;
 $tpl->appName = $config['app-name'];
 $tpl->jasmine = $config['jasmine'];
+$tpl->fireBugLight = $config['fireBugLight'];
 
 // Get the content
 $content = file_get_contents($filePath);

@@ -6,5 +6,6 @@ return array(
 	'more-path' => '../mootools-more',
 	'tests-path' => '../mootools-more/Tests',
 	'default-file' => 'Class/Chain.Wait_(tween)',
-	'jasmine' => false
+	'jasmine' => false,
+	'fireBugLight' => false,
 );
