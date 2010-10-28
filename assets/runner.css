@@ -37,7 +37,7 @@ a:active {
 
 #menu {
 	float: left;
-	width: 150px;
+	width: 200px;
 	border-right: 1px solid #ddd;
 	text-shadow: 0 1px 0 #fff;
 }
@@ -61,8 +61,6 @@ a:active {
 }
 
 #menu ul ul li a {
-	display: block;
-	width: 140px;
 	padding: 0px 5px;
 }
 
@@ -77,8 +75,9 @@ a:active {
 }
 
 #runner {
-	margin-left: 175px;
+	margin-left: 200px;
 	position: relative;
+	_height: 2000px;
 }
 
 #runner h1,
@@ -136,6 +135,7 @@ a:active {
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	padding: 4px;
+	text-shadow: none;
 }
 
 #actions dt a {
