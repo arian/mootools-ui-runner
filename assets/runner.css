@@ -120,6 +120,7 @@ a:active {
 	position: relative;
 	z-index: 1000;
 	padding: 4px 0px;
+	background: white;
 }
 
 #actions dt {
