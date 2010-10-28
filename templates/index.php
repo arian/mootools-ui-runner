@@ -20,29 +20,48 @@
 
 	<script>
 
-		var makeActions = function(tests){
+		(function(){
 
-			if (!$('actions')) new Element('dt', {
-				id: 'actions'
-			}).inject($('mt-content'), 'top');
+			var addListener = function(type, fn){
+				if (this.addEventListener) this.addEventListener(type, fn, false);
+				else this.attachEvent('on' + type, fn);			
+			};
 
-			if (typeOf(tests)) tests = Object.values(tests);
+			var addAction = function(test, actions){
+				var dt = document.createElement('dt'),
+					a = document.createElement('a'),
+					dd = document.createElement('dd');
+	
+				addListener.call(a, 'click', test.fn);
+				a.innerHTML = test.title;	
+				dt.appendChild(a);
 
-			tests.each(function(test) {
-				new Element('dt').adopt(
-					new Element('a', {
-						text: test.title,
-						events: {
-							click: test.fn
-						}
-					})
-				).inject('actions');
-				if (test.description) new Element('dd', {
-					text: test.description
-				}).inject('actions');
-			});
+				actions.appendChild(dt);
 
-		};
+				if (test.description){
+					dd.innerHTML = test.description;
+					actions.appendChild(dd);
+				}
+			};
+
+			this.makeActions = function(tests){
+	
+				var actions = document.getElementById('actions');
+				if (!actions){
+					actions = document.createElement('dt');
+					actions.setAttribute('id', 'actions');
+	
+					var element = document.getElementById('mt-content');
+					element.insertBefore(actions, element.firstChild)
+				}
+	
+				for (var name in tests) if (tests.hasOwnProperty(name)){
+					addAction(tests[name], actions);
+				}
+	
+			};
+			
+		})();
 
 		<?php if ($jasmine): ?>
 		window.onload = function(){
