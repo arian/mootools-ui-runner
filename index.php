@@ -54,6 +54,8 @@ $content = str_replace('/Tests/', $basepath.$testsPath.'/', $content);
 $content = str_replace('/depender/build', $basepath.'build.php', $content);
 $content = str_replace('/asset/more/', $basepath.$testsPath.'/_assets/', $content);
 $content = preg_replace('/\/ajax_(html_echo)\//', $basepath.'ajax.php', $content);
+$content = str_replace('/echo/jsonp', $basepath.'ajax.php?jsonp=1', $content);
+
 
 $tpl->content = $content;
 
