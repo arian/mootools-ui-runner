@@ -1,6 +1,7 @@
 <?php
 
-sleep(2);
+$delay = (isset($_GET['delay'])) ? (int) $_GET['delay'] : ((isset($_POST['delay'])) ? (int) $_POST['delay'] : 2);
+sleep($delay);
 
 
 if (!empty($_GET['html'])){
