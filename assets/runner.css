@@ -26,6 +26,10 @@ a:active {
 	background-color: transparent;
 }
 
+pre {
+	font-size: 12px;
+}
+
 #header {
 	text-shadow: 0 1px 0 #fff;
 	text-align: center;
