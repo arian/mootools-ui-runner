@@ -16,7 +16,7 @@
 	<script src="<?php echo $basepath; ?>assets/Syn.js"></script>
 <?php endif; ?>
 
-	<title><?php echo $appName; ?> - <?php echo htmlentities(str_replace('_', ' ', $title)); ?></title>
+	<title><?php echo $appName; ?> - <?php echo htmlentities($title); ?></title>
 
 	<script>
 
@@ -93,9 +93,9 @@
 <div id="header">
 <h1>MooTools More 1.3 Test Runner</h1>
 <h2>
-	<?php if ($prevTest): ?><a href="<?php echo $baseurl . '/' . $suite . '/' . $prevTest; ?>" class="buttons"> &#171; <?php echo substr($prevTest, strrpos($prevTest, '/', -1) + 1); ?></a><?php endif; ?>
-	<?php echo htmlentities(str_replace('_', ' ', substr($title, strrpos($title, '/', -1) + 1))); ?>
-	<?php if ($nextTest): ?><a href="<?php echo $baseurl . '/' . $suite . '/' . $nextTest; ?>" class="buttons"><?php echo substr($nextTest, strrpos($nextTest, '/', -1) + 1); ?> &#187; </a><?php endif; ?>
+	<?php if ($prevTest): ?><a href="<?php echo $baseurl . '/' . $suite . '/' . $prevTest; ?>" class="buttons"> &#171; <?php echo $prevTestTitle; ?></a><?php endif; ?>
+	<?php echo htmlentities($title); ?>
+	<?php if ($nextTest): ?><a href="<?php echo $baseurl . '/' . $suite . '/' . $nextTest; ?>" class="buttons"><?php echo $nextTestTitle; ?> &#187; </a><?php endif; ?>
 </h2>
 </div>
 

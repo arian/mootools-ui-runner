@@ -17,21 +17,18 @@ $suites = array_keys($config['tests']);
 if (empty($suite) || !isset($config['tests'][$suite])) $suite = $suites[0];
 
 $testsPath = $config['tests'][$suite];
-$defaultFile = 'intro.html';
+$defaultFile = 'intro';
 
 // Determine the right file
-if (empty($file)){
-	$file = $defaultFile;
-} else {
-	$file = implode('/', $file);
-}
+if (empty($file)) $file = $defaultFile;
+else $file = implode('/', $file);
 
 //$file = preg_replace('/[^a-zA-Z0-9\-\.\/]+/','',str_replace('../','',$file));
 $filePath = $testsPath . '/' . $file . '.html';
 
 if (!file_exists($filePath)){
 	$file = $defaultFile;
-	$filePath = 'templates/' . $file;
+	$filePath = 'templates/' . $file . '.html';
 }
 
 // Create template instance
@@ -39,7 +36,8 @@ $tpl = new Awf_Template();
 
 $tpl->baseurl 		= $baseurl 		= $_SERVER['SCRIPT_NAME'];
 $tpl->basepath 		= $basepath 	= str_replace('index.php', '', $baseurl);
-$tpl->title 		= $file;
+$slashPos = strrpos($file, '/', -1);
+$tpl->title 		= str_replace('_', ' ', ($slashPos !== false) ? substr($file, $slashPos + 1) : $file);
 $tpl->suite			= $suite;
 $tpl->appName 		= $config['app-name'];
 $tpl->jasmine 		= $config['jasmine'];
@@ -80,7 +78,7 @@ foreach ($config['tests'] as $suiteName => $path){
 				if ($fileinfo2->isFile() && substr($fileinfo2->getFilename(), -5) == '.html'){
 					$test = str_replace('.html', '', $fileinfo2->getFilename());
 					$category[] = $test;
-					if ($suite == $suiteName) $tests[] = $catName . '/' . $test;
+					if ($suite == $suiteName) $tests[] = $catName . '/' . $test; // previous and next
 				}
 			}
 			$categories[$catName] = $category;
@@ -99,7 +97,9 @@ if ($testIndex !== false){
 }
 
 $tpl->nextTest = $nextTest;
+$tpl->nextTestTitle = str_replace('_', ' ', substr($nextTest, strrpos($nextTest, '/', -1) + 1));
 $tpl->prevTest = $prevTest;
+$tpl->prevTestTitle = str_replace('_', ' ', substr($prevTest, strrpos($prevTest, '/', -1) + 1));
 
 
 // Fire the page!!
