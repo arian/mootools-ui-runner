@@ -46,6 +46,10 @@ pre {
 	text-shadow: 0 1px 0 #fff;
 }
 
+#menu h2 {
+	font-size: 1.5em;
+}
+
 #menu ul {
 	list-style: none;
 	margin: 0;
@@ -55,7 +59,7 @@ pre {
 #menu ul li strong {
 	display: block;
 	border-bottom: 1px solid #eee;
-	font-size: 1.4em;
+	font-size: 1.3em;
 	line-height: 1.5em;
 }
 

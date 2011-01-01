@@ -24,16 +24,16 @@
 
 			var addListener = function(type, fn){
 				if (this.addEventListener) this.addEventListener(type, fn, false);
-				else this.attachEvent('on' + type, fn);			
+				else this.attachEvent('on' + type, fn);
 			};
 
 			var addAction = function(test, actions){
 				var dt = document.createElement('dt'),
 					a = document.createElement('a'),
 					dd = document.createElement('dd');
-	
+
 				addListener.call(a, 'click', test.fn);
-				a.innerHTML = test.title;	
+				a.innerHTML = test.title;
 				dt.appendChild(a);
 
 				actions.appendChild(dt);
@@ -45,22 +45,22 @@
 			};
 
 			this.makeActions = function(tests){
-	
+
 				var actions = document.getElementById('actions');
 				if (!actions){
 					actions = document.createElement('dt');
 					actions.setAttribute('id', 'actions');
-	
+
 					var element = document.getElementById('mt-content');
 					element.insertBefore(actions, element.firstChild)
 				}
-	
+
 				for (var name in tests) if (tests.hasOwnProperty(name)){
 					addAction(tests[name], actions);
 				}
-	
+
 			};
-			
+
 		})();
 
 		<?php if ($jasmine): ?>
@@ -93,9 +93,9 @@
 <div id="header">
 <h1>MooTools More 1.3 Test Runner</h1>
 <h2>
-	<?php if ($prevTest): ?><a href="<?php echo $baseurl.'/'.$prevTest; ?>" class="buttons"> &#171; <?php echo substr($prevTest, strrpos($prevTest, '/', -1) + 1); ?></a><?php endif; ?>
+	<?php if ($prevTest): ?><a href="<?php echo $baseurl . '/' . $suite . '/' . $prevTest; ?>" class="buttons"> &#171; <?php echo substr($prevTest, strrpos($prevTest, '/', -1) + 1); ?></a><?php endif; ?>
 	<?php echo htmlentities(str_replace('_', ' ', substr($title, strrpos($title, '/', -1) + 1))); ?>
-	<?php if ($nextTest): ?><a href="<?php echo $baseurl.'/'.$nextTest; ?>" class="buttons"><?php echo substr($nextTest, strrpos($nextTest, '/', -1) + 1); ?> &#187; </a><?php endif; ?>
+	<?php if ($nextTest): ?><a href="<?php echo $baseurl . '/' . $suite . '/' . $nextTest; ?>" class="buttons"><?php echo substr($nextTest, strrpos($nextTest, '/', -1) + 1); ?> &#187; </a><?php endif; ?>
 </h2>
 </div>
 
@@ -111,14 +111,20 @@
 
 	<div id="menu">
 		<ul>
-		<?php foreach($menu as $category => $link): ?>
+			<li><a href="<?php echo $baseurl; ?>">Intro</a></li>
+		</ul>
+	<?php foreach ($menu as $suiteName => $suiteFiles): ?>
+		<h2><?php echo $suiteName; ?></h2>
+		<ul>
+		<?php foreach($suiteFiles as $category => $link): ?>
 			<li><strong><?php echo $category; ?></strong><ul>
 			<?php foreach($link as $text): ?>
-			<li><a href="<?php echo $baseurl.'/'.$category.'/'.$text; ?>"><?php echo str_replace('_', ' ', $text); ?></a></li>
+			<li><a href="<?php echo $baseurl . '/' . $suiteName .'/' . $category . '/' . $text; ?>"><?php echo str_replace('_', ' ', $text); ?></a></li>
 			<?php endforeach; ?>
 		</ul></li>
 		<?php endforeach; ?>
 		</ul>
+	<?php endforeach; ?>
 	</div>
 
 	<div id="runner">
