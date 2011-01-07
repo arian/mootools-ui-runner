@@ -13,10 +13,11 @@ $files = (empty($components)) ? $pkg->get_all_files() : $pkg->components_to_file
 
 $files = $pkg->complete_files($files);
 
-$exclude_blocks = isset($config['sources']) ? $config['sources'] : array();
+$exclude_blocks = isset($config['exclude-blocks']) ? $config['exclude-blocks'] : array();
 if (isset($_GET['1.2compat'])) $exclude_blocks = array_filter($exclude_blocks, function($value){
 	return $value != '1.2compat';
 });
+
 
 $output = $pkg->build($files, array(), array(), $exclude_blocks);
 
