@@ -167,6 +167,7 @@ pre {
 h2 .buttons {
 	font-size: 0.7em;
 	font-weight: normal;
+	background: none;
 }
 
 h2 a.buttons {
