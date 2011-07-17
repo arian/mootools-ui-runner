@@ -15,7 +15,10 @@ if (!empty($_GET['html'])){
 	$output = $callback . '({"some": "jsonp", "data": "data"});';
 
 } else {
-	$output = 'html';
+	$output = print_r(array(
+		'post' => $_POST,
+		'get' => $_GET
+	), true);
 }
 
 header("Cache-Control: no-cache");

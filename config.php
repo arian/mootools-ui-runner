@@ -5,14 +5,12 @@ return array(
 	'sources' => array(
 		'../mootools-core',
 		'../mootools-more',
-//		'../mootools-element-behaviors'
 	),
 	'exclude-blocks' => array(
 		'1.2compat'
 	),
-	'tests-path' => '../mootools-more/Tests',
 	'tests' => array(
-		'more' => '../mootools-more/Tests',
+		'more' => '../mootools-more/Tests/Interactive',
 //		'Element.Behaviors' => '../mootools-element-behaviors/Tests'
 	),
 	'jasmine' => false,
